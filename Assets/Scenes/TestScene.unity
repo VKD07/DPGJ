@@ -612,7 +612,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1379,6 +1379,7 @@ GameObject:
   - component: {fileID: 1382953263}
   - component: {fileID: 1382953264}
   - component: {fileID: 1382953265}
+  - component: {fileID: 1382953266}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1452,11 +1453,35 @@ MonoBehaviour:
   _pitchSpeed: -60
   _maxPitchAngle: 80
   _thirdPersonFollow: {fileID: 1845766287}
+  _cameraOffsetUp: {x: 1.32, y: 4.91, z: 1.24}
+  _cameraOffsetNeutral: {x: 1.32, y: 1.01, z: -3.9}
+  _cameraOffsetDown: {x: 1.32, y: -3.32, z: -2.14}
+  _cameraFollowSmoothing: 5
   visuals: {fileID: 1770607557}
   _maxRollAngle: 25
   _rollSmoothing: 5
   _thrustTiltAngle: 10
   _thrustTiltSmoothing: 5
+--- !u!114 &1382953266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382953262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f4c47074aa35e4ebf573e313686d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeed: 250
+  _playerMovement: {fileID: 1382953265}
+  _sprintInput: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _cameraDistance: 20
+  _fovDistance: 70
+  _cameraLerpSpeed: 4
+  _thirdPersonFollow: {fileID: 1845766287}
+  _cinemachineCamera: {fileID: 1845766288}
 --- !u!1 &1396945090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,7 +2326,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
