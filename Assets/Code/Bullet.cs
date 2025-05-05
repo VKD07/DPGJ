@@ -15,10 +15,10 @@ namespace Code
         
         private void Update()
         {
-            MoveForward();
+            MoveTowardsTarget();
         }
 
-        private void MoveForward()
+        private void MoveTowardsTarget()
         {
             transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _moveSpeed * Time.deltaTime);
         }
