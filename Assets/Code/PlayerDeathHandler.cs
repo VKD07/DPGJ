@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Code
 {
@@ -57,7 +58,7 @@ namespace Code
         {
             for (int i = 0; i < playerScripts.Length; i++)
             {
-                if (playerScripts[i] == this)
+                if (playerScripts[i] == this || playerScripts[i] == GetComponent<PlayerInput>())
                 {
                     continue;
                 }

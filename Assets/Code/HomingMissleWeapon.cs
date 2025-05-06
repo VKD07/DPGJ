@@ -1,22 +1,21 @@
 ﻿using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Code
 {
-    [RequireComponent(typeof(EnemyUITracker), typeof(Gun))]
+    [RequireComponent(typeof(EnemyUITracker), typeof(Gun), typeof(PlayerInput))]
     public class HomingMissleWeapon : FactoryPool<HomingMissle>
     {
         [SerializeField] private int _numOfMisslesAvailable = 10;
         [SerializeField] private float _missleSpeed = 30f;
         [SerializeField] private float _missleDamage = 1000f;
-        [SerializeField] private InputActionReference _attackInput;
 
         public bool IsActivated;
 
         private EnemyUITracker _enemyUITracker;
         private Gun _playergun;
+        private InputAction _attackAction;
         private int _initMissleAmount;
 
         protected override void Awake()
@@ -24,6 +23,10 @@ namespace Code
             base.Awake();
             _enemyUITracker = GetComponent<EnemyUITracker>();
             _playergun = GetComponent<Gun>();
+
+            var playerInput = GetComponent<PlayerInput>();
+            _attackAction = playerInput.actions["Attack"];
+
             _initMissleAmount = _numOfMisslesAvailable;
         }
 
@@ -38,11 +41,9 @@ namespace Code
         private void Update()
         {
             if (!IsActivated)
-            {
                 return;
-            }
 
-            if (_numOfMisslesAvailable > 0 && _attackInput.action.WasPressedThisFrame())
+            if (_numOfMisslesAvailable > 0 && _attackAction.WasPressedThisFrame())
             {
                 _numOfMisslesAvailable--;
                 ActivateMissle();
@@ -64,10 +65,7 @@ namespace Code
                 if (!Products[i].gameObject.activeSelf)
                 {
                     if (_enemyUITracker.VisibleEnemiesOnCam.Count == 0)
-                    {
-                        Debug.Log("No visible enemies to target.");
                         return;
-                    }
 
                     int targetIndex = (_initMissleAmount - _numOfMisslesAvailable - 1) % _enemyUITracker.VisibleEnemiesOnCam.Count;
                     GameObject targetEnemy = _enemyUITracker.VisibleEnemiesOnCam[targetIndex];
@@ -83,7 +81,6 @@ namespace Code
                 }
             }
         }
-
 
         public void ReloadMissles()
         {

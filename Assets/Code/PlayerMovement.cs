@@ -1,38 +1,36 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Code
 {
+    [RequireComponent(typeof(PlayerInput))]
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("Input")] [SerializeField] private InputActionReference _move;
-        [SerializeField] private InputActionReference _look;
-
-        [FormerlySerializedAs("_moveSpeed")] [Header("Movement Settings")] [SerializeField]
-        private float _thrustSpeed = 50f;
-
+        [Header("Movement Settings")]
+        [SerializeField] private float _thrustSpeed = 50f;
         [SerializeField] private float _strafeSpeed = 40f;
         [SerializeField] private float _yawSpeed = 60f;
         [SerializeField] private float _pitchSpeed = 60f;
         [SerializeField] private float _maxPitchAngle = 90f;
 
-        [Header("Camera Settings")] [SerializeField]
-        private CinemachineThirdPersonFollow _thirdPersonFollow;
-
+        [Header("Camera Settings")]
+        [SerializeField] private CinemachineThirdPersonFollow _thirdPersonFollow;
         [SerializeField] private Vector3 _cameraOffsetUp = new Vector3(1.32f, 4.91f, 1.24f);
         [SerializeField] private Vector3 _cameraOffsetNeutral = new Vector3(1.32f, 1.01f, -3.90f);
         [SerializeField] private Vector3 _cameraOffsetDown = new Vector3(1.32f, -3.32f, -2.14f);
         [SerializeField] private float _cameraFollowSmoothing = 5f;
 
-        [Header("Visual Settings")] [SerializeField]
-        private Transform visuals;
-
+        [Header("Visual Settings")]
+        [SerializeField] private Transform visuals;
         [SerializeField] private float _maxRollAngle = 25f;
         [SerializeField] private float _rollSmoothing = 5f;
         [SerializeField] private float _thrustTiltAngle = 10f;
         [SerializeField] private float _thrustTiltSmoothing = 5f;
+
+        private PlayerInput _playerInput;
+        private InputAction _moveAction;
+        private InputAction _lookAction;
 
         private Vector2 _moveInput;
         private Vector2 _lookInput;
@@ -43,10 +41,17 @@ namespace Code
         private Vector3 _currentShoulderOffset;
         private bool _isAssisted;
 
+        private void Awake()
+        {
+            _playerInput = GetComponent<PlayerInput>();
+            _moveAction = _playerInput.actions["Move"];
+            _lookAction = _playerInput.actions["Look"];
+        }
+
         private void Update()
         {
-            _moveInput = _move.action.ReadValue<Vector2>();
-            _lookInput = _look.action.ReadValue<Vector2>();
+            _moveInput = _moveAction.ReadValue<Vector2>();
+            _lookInput = _lookAction.ReadValue<Vector2>();
             Move();
             Rotate();
             UpdateVisuals();
@@ -54,14 +59,9 @@ namespace Code
 
         private void Move()
         {
-            if (_isAssisted)
-            {
-                return;
-            }
+            if (_isAssisted) return;
 
-            Vector3 movement =
-                (transform.forward * _moveInput.y * _thrustSpeed + transform.right * _moveInput.x * _strafeSpeed) *
-                Time.deltaTime;
+            Vector3 movement = (transform.forward * _moveInput.y * _thrustSpeed + transform.right * _moveInput.x * _strafeSpeed) * Time.deltaTime;
             transform.position += movement;
         }
 
@@ -70,26 +70,20 @@ namespace Code
             _isAssisted = val;
             if (val)
             {
-                Vector3 movement =
-                    (transform.forward * 1 * _thrustSpeed + transform.right * _moveInput.x * _strafeSpeed) *
-                    Time.deltaTime;
+                Vector3 movement = (transform.forward * 1 * _thrustSpeed + transform.right * _moveInput.x * _strafeSpeed) * Time.deltaTime;
                 transform.position += movement;
             }
         }
 
         private void Rotate()
         {
-            _currentPitch = Mathf.Clamp(_currentPitch - _lookInput.y * _pitchSpeed * Time.deltaTime, -_maxPitchAngle,
-                _maxPitchAngle);
+            _currentPitch = Mathf.Clamp(_currentPitch - _lookInput.y * _pitchSpeed * Time.deltaTime, -_maxPitchAngle, _maxPitchAngle);
             _currentYaw += _lookInput.x * _yawSpeed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(_currentPitch, _currentYaw, 0f);
 
             float normalizedPitch = _currentPitch / _maxPitchAngle;
-            Vector3 targetOffset = _currentPitch > 0
-                ? Vector3.Lerp(_cameraOffsetNeutral, _cameraOffsetUp, normalizedPitch)
-                : Vector3.Lerp(_cameraOffsetNeutral, _cameraOffsetDown, -normalizedPitch);
-            _currentShoulderOffset =
-                Vector3.Lerp(_currentShoulderOffset, targetOffset, Time.deltaTime * _cameraFollowSmoothing);
+            Vector3 targetOffset = _currentPitch > 0 ? Vector3.Lerp(_cameraOffsetNeutral, _cameraOffsetUp, normalizedPitch) : Vector3.Lerp(_cameraOffsetNeutral, _cameraOffsetDown, -normalizedPitch);
+            _currentShoulderOffset = Vector3.Lerp(_currentShoulderOffset, targetOffset, Time.deltaTime * _cameraFollowSmoothing);
             _thirdPersonFollow.ShoulderOffset = _currentShoulderOffset;
         }
 
