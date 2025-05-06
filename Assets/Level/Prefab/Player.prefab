@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8188144480650307362}
   - component: {fileID: 4100728362828696807}
   - component: {fileID: 7857664907891064775}
+  - component: {fileID: 1096496120342358686}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -191,6 +192,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.3692284, y: 1.6540565, z: 5.3886337}
   m_Center: {x: 0.020794392, y: 0.32702827, z: 0.4082451}
+--- !u!114 &1096496120342358686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961687429257444707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0890dfc5ce7e49ca925f73cc61e4db07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberOfProducts: 20
+  _prefab: {fileID: 6641647337376168202, guid: 157d3937ef67c704d8995e2d43ecccd8, type: 3}
+  _uiParent: {fileID: 3162358152302981444}
+  _player: {fileID: 976026583412871550}
 --- !u!1 &3089398991524255099
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +328,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8329830463814617288}
+  - {fileID: 3162358152302981444}
   m_Father: {fileID: 976026583412871550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -381,6 +399,41 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &3689576700958297425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3162358152302981444}
+  m_Layer: 0
+  m_Name: ArrowIndicators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3162358152302981444
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689576700958297425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1743017445249473609}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6430030451934729309
 GameObject:
   m_ObjectHideFlags: 0

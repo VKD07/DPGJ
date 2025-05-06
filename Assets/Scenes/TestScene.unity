@@ -35988,7 +35988,6 @@ MonoBehaviour:
   _numberOfProducts: 20
   _prefab: {fileID: 6641647337376168202, guid: 157d3937ef67c704d8995e2d43ecccd8, type: 3}
   _uiParent: {fileID: 1997169660}
-  _arrowUI: {fileID: 6641647337376168202, guid: 157d3937ef67c704d8995e2d43ecccd8, type: 3}
   _player: {fileID: 1382953263}
 --- !u!1 &1513531694
 GameObject:
@@ -46369,7 +46368,7 @@ MonoBehaviour:
   - {fileID: 1085942022}
   - {fileID: 1169012653}
   - {fileID: 2069645902}
-  _timeBetweenSpawns: {x: 1, y: 5}
+  _timeBetweenSpawns: {x: 5, y: 10}
 --- !u!1 &1945391279
 GameObject:
   m_ObjectHideFlags: 0

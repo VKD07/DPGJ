@@ -41,13 +41,13 @@ namespace Code
         {
             if (_droneSpawner == null || _player == null) return;
 
-            foreach (var enemy in _droneSpawner.Products)
+            foreach (DroneEnemy enemy in _droneSpawner.Products)
             {
                 if (enemy == null || !enemy.gameObject.activeSelf) continue;
 
                 if (!_trackedArrows.ContainsKey(enemy.transform))
                 {
-                    var arrow = GetInactiveArrowFromPool();
+                    RectTransform arrow = GetInactiveArrowFromPool();
                     if (arrow != null)
                     {
                         _trackedArrows.Add(enemy.transform, arrow);
@@ -69,8 +69,11 @@ namespace Code
                     toRemove.Add(kvp.Key);
                 }
             }
+
             foreach (var dead in toRemove)
+            {
                 _trackedArrows.Remove(dead);
+            }
         }
 
         private RectTransform GetInactiveArrowFromPool()
