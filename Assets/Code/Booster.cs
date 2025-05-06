@@ -12,12 +12,13 @@ namespace Code
         [SerializeField] private float _totalBoostPercent = 100f;
         [SerializeField] private float _depletionStrength = 10f;
         [SerializeField] private float _regenerationStrength = 5f;
-
         private float _currentBoostPercent;
         private bool _boostDepleted;
 
+        [FormerlySerializedAs("_maxSpeed")]
         [Header("Movement Settings")]
-        [SerializeField] private float _maxSpeed = 120f;
+        [SerializeField] private float _thrustMaxSpeed = 120f;
+        [SerializeField] private float _yawMaxSpeed = 90f;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private InputActionReference _sprintInput;
 
@@ -28,12 +29,14 @@ namespace Code
         [SerializeField] private CinemachineThirdPersonFollow _thirdPersonFollow;
         [SerializeField] private CinemachineCamera _cinemachineCamera;
 
-        private float _initSpeed;
+        private float _initThurstSpeed;
+        private float _initYawSpeed;
         private bool _isSprinting;
 
         private void Awake()
         {
-            _initSpeed = _playerMovement.GetMoveSpeed();
+            _initThurstSpeed = _playerMovement.GetThrustSpeed();
+            _initYawSpeed = _playerMovement.GetYawSpeed();
             _currentBoostPercent = _totalBoostPercent;
         }
 
@@ -90,8 +93,10 @@ namespace Code
 
         private void UpdateMovement()
         {
-            float speed = _isSprinting ? _maxSpeed : _initSpeed;
-            _playerMovement.SetMoveSpeed(speed);
+            float thrustSpeed = _isSprinting ? _thrustMaxSpeed : _initThurstSpeed;
+            float yawSpeed = _isSprinting ? _yawMaxSpeed : _initYawSpeed;
+            _playerMovement.SetMoveSpeed(thrustSpeed);
+            _playerMovement.SetYawSpeed(yawSpeed);
             _playerMovement.SetAssistedMovement(_isSprinting);
         }
 

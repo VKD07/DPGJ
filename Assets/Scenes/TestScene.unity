@@ -57593,6 +57593,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6316345387966100288, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: _yawSpeed
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316345387966100288, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: _thirdPersonFollow
       value: 
       objectReference: {fileID: 1845766287}
