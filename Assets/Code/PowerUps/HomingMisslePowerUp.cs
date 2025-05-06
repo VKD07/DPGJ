@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Rendering;
+﻿using UnityEngine;
 
 namespace Code.PowerUps
 {
@@ -11,6 +9,7 @@ namespace Code.PowerUps
             if (other.transform.TryGetComponent(out HomingMissleWeapon homingMissle))
             {
                 homingMissle.IsActivated = true;
+                homingMissle.ReloadMissles();
                 gameObject.SetActive(false);
             }
         }

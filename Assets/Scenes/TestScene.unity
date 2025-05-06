@@ -36339,6 +36339,55 @@ MonoBehaviour:
   - {fileID: 1215384516}
   _timeBetweenSpawns: {x: 5, y: 10}
   _hideOnSpawn: 1
+--- !u!1 &1336582454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1336582455}
+  - component: {fileID: 1336582456}
+  m_Layer: 0
+  m_Name: LootPowerUpManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1336582455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336582454}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -188.55457, y: 196.03853, z: 62.48993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1336582456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336582454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd5bc2cdc05e284fb9c72c6ddd20dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _powerUps:
+  - {fileID: 3315346151751278332, guid: 1753c5d67b38f2741aa15384735809bb, type: 3}
+  - {fileID: 2821953744260386293, guid: 62898d5dc8f5fb74f8bc751c535f0523, type: 3}
+  - {fileID: 6445572331741610468, guid: 3e8b144132ba37d418dad1b351c6a41d, type: 3}
+  _numofPoolPerPowerUp: 6
 --- !u!1 &1368970053
 GameObject:
   m_ObjectHideFlags: 0
@@ -57607,7 +57656,7 @@ PrefabInstance:
       objectReference: {fileID: 1485953280276913531, guid: a019c92b9a5479a44b17d3d6d7f8a38e, type: 3}
     - target: {fileID: 5767148384719312327, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: IsActivated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5767148384719312327, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: _attackInput
@@ -57650,6 +57699,7 @@ SceneRoots:
   - {fileID: 1845766289}
   - {fileID: 302006661}
   - {fileID: 1575419456}
+  - {fileID: 1336582455}
   - {fileID: 1006502805}
   - {fileID: 1643477830}
   - {fileID: 1936974804}
