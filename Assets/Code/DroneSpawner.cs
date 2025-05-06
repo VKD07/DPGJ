@@ -48,7 +48,7 @@ public class DroneSpawner : FactoryPool<DroneEnemy>
 
     private Vector3 ChooseATargetBuilding()
     {
-        for (int i = 0; i < _buildingManger.AllBuildings.Length; i++)
+        for (int i = 0; i < _buildingManger.AllBuildings.Count; i++)
         {
             if (!_buildingManger.AllBuildings[i].IsBurning)
             {

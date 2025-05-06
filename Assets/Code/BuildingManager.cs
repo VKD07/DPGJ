@@ -7,7 +7,7 @@ namespace Code
     {
         public static BuildingManager Instance { get; private set; }
 
-        public Building[] AllBuildings { get; private set; }
+        public List<Building> AllBuildings { get; private set; }
 
         private void Awake()
         {
@@ -19,7 +19,12 @@ namespace Code
 
             Instance = this;
 
-            AllBuildings = FindObjectsByType<Building>(FindObjectsSortMode.None);
+            AllBuildings = new List<Building>(FindObjectsByType<Building>(FindObjectsSortMode.None));
+        }
+
+        public void RemoveBuilding(Building building)
+        {
+            AllBuildings.Remove(building);
         }
     }
 }

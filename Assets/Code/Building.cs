@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code
 {
-    public class Building : MonoBehaviour, IBurnable, IBuilding
+    public class Building : MonoBehaviour, IBurnable, IBuilding, IObstacle
     {
         [SerializeField] private float secondsBeforeDestroyed = 60;
         [SerializeField] private ParticleSystem _fireParticle;
@@ -57,7 +57,13 @@ namespace Code
         private void DestroyBuilding()
         {
             //TODO: Spawn Cubes
+            BuildingManager.Instance.RemoveBuilding(this);
             Destroy(gameObject);
+        }
+
+        public void OnCollided()
+        {
+            Ignite();
         }
     }
 }
