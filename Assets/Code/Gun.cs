@@ -8,11 +8,14 @@ namespace Code
     public class Gun : MonoBehaviour
     {
         [Header("Attack Gun Settings")] [SerializeField]
-        private float _damage = 10f;
+        public float _gunDamage = 5f;
+        public bool DisableGun;
+
+        [SerializeField] private bool _disableFriendlyFire;
 
         [SerializeField] private float _attackInterval = 0.3f;
         [SerializeField] private Bullet _bulletPrefab;
-        [SerializeField] private Transform _bulletSpawnPoint;
+        [SerializeField] public Transform _bulletSpawnPoint;
         private float _lastAttackTime;
         private Vector3 _targetPoint;
         private Vector3 _direction;
@@ -36,10 +39,13 @@ namespace Code
 
         private void Update()
         {
-            if (_attackInput.action.IsPressed() && Time.time >= _lastAttackTime + _attackInterval)
+            if (!DisableGun)
             {
-                ShootEnemies();
-                _lastAttackTime = Time.time;
+                if (_attackInput.action.IsPressed() && Time.time >= _lastAttackTime + _attackInterval)
+                {
+                    ShootEnemies();
+                    _lastAttackTime = Time.time;
+                }
             }
 
             if (_waterGunInput.action.IsPressed())
@@ -52,6 +58,8 @@ namespace Code
         {
             _attackGunRay = _playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
 
+            
+            //TODO: REMOVE BULLET SPAWNING
             Bullet bullet = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
 
             _targetPoint = _bulletSpawnPoint.position + _playerCamera.transform.forward * _rayDistance;
@@ -62,7 +70,13 @@ namespace Code
             {
                 if (hit.transform.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.OnDamageTaken(_damage);
+                    damageable.OnDamageTaken(_gunDamage);
+                }
+
+
+                if (!_disableFriendlyFire && hit.transform.TryGetComponent(out PlayerDeathHandler playerDeathHandler))
+                {
+                    playerDeathHandler.KillPlayer();
                 }
             }
         }

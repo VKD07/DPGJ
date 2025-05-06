@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.PowerUps
 {
-    public class WaterPowerUp : MonoBehaviour, IProduct
+    public class WaterPowerUp : MonoBehaviour, IProduct, IPowerUp
     {
         [SerializeField] private float _fallSpeed = 1f;
 

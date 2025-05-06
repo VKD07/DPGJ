@@ -5889,6 +5889,7 @@ MonoBehaviour:
   cam: {fileID: 330585545}
   playerCanvas: {fileID: 1039104493}
   _trackingUI: {fileID: 807478254081304074, guid: b5f07523f7282924eb24f0ccb88d48ff, type: 3}
+  VisibleEnemiesOnCam: []
 --- !u!1 &564460287
 GameObject:
   m_ObjectHideFlags: 0
@@ -57584,17 +57585,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2125417205423686036, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 330585545}
+    - target: {fileID: 2125417205423686036, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: droneSpawner
+      value: 
+      objectReference: {fileID: 1936974805}
+    - target: {fileID: 2125417205423686036, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: playerCanvas
+      value: 
+      objectReference: {fileID: 1039104493}
     - target: {fileID: 3646857399462045467, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 3646857399462045467, guid: 226f66b82303f0542b061a63340dde28, type: 3}
-      propertyPath: _fireExtinguishStr
-      value: 40
+    - target: {fileID: 5767148384719312327, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 1485953280276913531, guid: a019c92b9a5479a44b17d3d6d7f8a38e, type: 3}
+    - target: {fileID: 5767148384719312327, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: IsActivated
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6316345387966100288, guid: 226f66b82303f0542b061a63340dde28, type: 3}
-      propertyPath: _yawSpeed
-      value: 65
+    - target: {fileID: 5767148384719312327, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: _attackInput
+      value: 
+      objectReference: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 5767148384719312327, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: _missleSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767148384719312327, guid: 226f66b82303f0542b061a63340dde28, type: 3}
+      propertyPath: _numberOfProducts
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6316345387966100288, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: _thirdPersonFollow

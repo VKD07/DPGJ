@@ -9,14 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 976026583412871550}
+  - component: {fileID: 7857664907891064775}
   - component: {fileID: 7670880262999931645}
   - component: {fileID: 6316345387966100288}
   - component: {fileID: 8205381916929015349}
   - component: {fileID: 3646857399462045467}
   - component: {fileID: 8188144480650307362}
   - component: {fileID: 4100728362828696807}
-  - component: {fileID: 7857664907891064775}
   - component: {fileID: 1096496120342358686}
+  - component: {fileID: 2125417205423686036}
+  - component: {fileID: 5767148384719312327}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -41,6 +43,27 @@ Transform:
   - {fileID: 1743017445249473609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7857664907891064775
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961687429257444707}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3692284, y: 1.6540565, z: 5.3886337}
+  m_Center: {x: 0.020794392, y: 0.32702827, z: 0.4082451}
 --- !u!114 &7670880262999931645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,9 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _move: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _look: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _moveSpeed: 100
+  _thrustSpeed: 100
   _strafeSpeed: 40
-  _yawSpeed: 60
+  _yawSpeed: 65
   _pitchSpeed: -60
   _maxPitchAngle: 80
   _thirdPersonFollow: {fileID: 0}
@@ -115,7 +138,8 @@ MonoBehaviour:
   _totalBoostPercent: 100
   _depletionStrength: 15
   _regenerationStrength: 5
-  _maxSpeed: 250
+  _thrustMaxSpeed: 250
+  _yawMaxSpeed: 90
   _playerMovement: {fileID: 6316345387966100288}
   _sprintInput: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _cameraDistance: 20
@@ -135,11 +159,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad380b982762854449a7add9acba62b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 5
+  _gunDamage: 5
+  DisableGun: 0
+  _disableFriendlyFire: 0
   _attackInterval: 0.05
   _bulletPrefab: {fileID: 1220891120650220569, guid: 321e48633c907b54da312630a37c83e3, type: 3}
   _bulletSpawnPoint: {fileID: 6041125087615638690}
-  _waterGunStrength: 30
+  _waterStoragePercent: 100
+  _waterGunReductionStr: 10
+  _fireExtinguishStr: 40
+  _waterRange: 50
   _attackInput: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _waterGunInput: {fileID: 674819227414345895, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _playerCamera: {fileID: 0}
@@ -171,27 +200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathTime: 5
   _visuals: {fileID: 3089398991524255099}
---- !u!65 &7857664907891064775
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961687429257444707}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.3692284, y: 1.6540565, z: 5.3886337}
-  m_Center: {x: 0.020794392, y: 0.32702827, z: 0.4082451}
 --- !u!114 &1096496120342358686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +216,42 @@ MonoBehaviour:
   _prefab: {fileID: 6641647337376168202, guid: 157d3937ef67c704d8995e2d43ecccd8, type: 3}
   _uiParent: {fileID: 3162358152302981444}
   _player: {fileID: 976026583412871550}
+--- !u!114 &2125417205423686036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961687429257444707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ab05c44efd4f92b79dce9cb17bc774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droneSpawner: {fileID: 0}
+  cam: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  _trackingUI: {fileID: 807478254081304074, guid: b5f07523f7282924eb24f0ccb88d48ff, type: 3}
+  VisibleEnemiesOnCam: []
+--- !u!114 &5767148384719312327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961687429257444707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7830359560247838d320b97ca322cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberOfProducts: 0
+  _prefab: {fileID: 0}
+  _numOfMisslesAvailable: 10
+  _missleSpeed: 30
+  _missleDamage: 1000
+  _attackInput: {fileID: 0}
+  IsActivated: 0
 --- !u!1 &3089398991524255099
 GameObject:
   m_ObjectHideFlags: 0
