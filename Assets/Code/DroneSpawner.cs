@@ -1,16 +1,17 @@
 using System.Collections;
 using Code;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class DroneSpawner : FactoryPool<DroneEnemy>
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private Transform [] _spawnPoints;
+    [SerializeField] private BuildingManager _buildingManger;
+    [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Vector2 _timeBetweenSpawns;
     private float randomTime;
     private int randomPositionIndex;
-    
+
 
     private void OnEnable()
     {
@@ -37,11 +38,23 @@ public class DroneSpawner : FactoryPool<DroneEnemy>
             {
                 if (!Products[i].gameObject.activeSelf)
                 {
-                    Products[i].Setup(target.position, _spawnPoints[randomPositionIndex].position, Quaternion.identity);
+                    Products[i].Setup(ChooseATargetBuilding(), _spawnPoints[randomPositionIndex].position, Quaternion.identity);
                     Products[i].gameObject.SetActive(true);
                     break;
                 }
             }
         }
+    }
+
+    private Vector3 ChooseATargetBuilding()
+    {
+        for (int i = 0; i < _buildingManger.AllBuildings.Length; i++)
+        {
+            if (!_buildingManger.AllBuildings[i].IsBurning)
+            {
+                return _buildingManger.AllBuildings[i].transform.position;
+            }
+        }
+        return _buildingManger.AllBuildings[0].transform.position;
     }
 }

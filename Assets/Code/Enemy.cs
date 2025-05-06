@@ -6,7 +6,7 @@ namespace Code
 {
     public abstract class Enemy : MonoBehaviour, IDamageable, IDestroyable
     {
-        [SerializeField] private float _health;
+        [SerializeField] protected float _health;
 
         public void OnDamageTaken(float value)
         {
@@ -20,7 +20,8 @@ namespace Code
 
         public void OnDestroy()
         {
-            Destroy(gameObject);
+            _health = 0;
+            gameObject.SetActive(false);
         }
     }
 }

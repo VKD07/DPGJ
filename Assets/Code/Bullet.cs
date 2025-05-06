@@ -25,12 +25,8 @@ namespace Code
 
         public void OnDestroy()
         {
+            //TODO: SetActiveFalse
             Destroy(gameObject);
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            OnDestroy();
         }
     }
 }

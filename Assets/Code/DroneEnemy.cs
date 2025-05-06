@@ -23,7 +23,11 @@ namespace Code
 
         private void OnCollisionEnter(Collision other)
         {
-            gameObject.SetActive(false);
+            if (other.transform.TryGetComponent(out IBurnable burnable))
+            {
+                burnable.Ignite();
+            }
+            OnDestroy();
         }
     }
 }
