@@ -2,32 +2,38 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Code
 {
     [RequireComponent(typeof(PlayerMovement))]
     public class Booster : MonoBehaviour
     {
-        [Header("Boost Settings")]
-        [SerializeField] private float _totalBoostPercent = 100f;
+        [Header("Boost Settings")] [SerializeField]
+        private float _totalBoostPercent = 100f;
+
         [SerializeField] private float _depletionStrength = 10f;
         [SerializeField] private float _regenerationStrength = 5f;
         private float _currentBoostPercent;
         private bool _boostDepleted;
 
-        [FormerlySerializedAs("_maxSpeed")]
-        [Header("Movement Settings")]
-        [SerializeField] private float _thrustMaxSpeed = 120f;
+        [FormerlySerializedAs("_maxSpeed")] [Header("Movement Settings")] [SerializeField]
+        private float _thrustMaxSpeed = 120f;
+
         [SerializeField] private float _yawMaxSpeed = 90f;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private InputActionReference _sprintInput;
 
-        [Header("Camera Settings")]
-        [SerializeField] private float _cameraDistance = 23.71f;
+        [Header("Camera Settings")] [SerializeField]
+        private float _cameraDistance = 23.71f;
+
         [SerializeField] private float _fovDistance = 80f;
         [SerializeField] private float _cameraLerpSpeed = 5f;
         [SerializeField] private CinemachineThirdPersonFollow _thirdPersonFollow;
         [SerializeField] private CinemachineCamera _cinemachineCamera;
+
+        [Header("UI")] [SerializeField] private Slider _slider;
+
 
         private float _initThurstSpeed;
         private float _initYawSpeed;
@@ -38,10 +44,12 @@ namespace Code
             _initThurstSpeed = _playerMovement.GetThrustSpeed();
             _initYawSpeed = _playerMovement.GetYawSpeed();
             _currentBoostPercent = _totalBoostPercent;
+            UpdateUISlider();
         }
 
         private void Update()
         {
+            UpdateUISlider();
             HandleBoostInput();
             UpdateMovement();
             UpdateCamera();
@@ -116,6 +124,11 @@ namespace Code
                 targetFOV,
                 Time.deltaTime * _cameraLerpSpeed
             );
+        }
+
+        private void UpdateUISlider()
+        {
+            _slider.value = _currentBoostPercent / 100f;
         }
     }
 }
