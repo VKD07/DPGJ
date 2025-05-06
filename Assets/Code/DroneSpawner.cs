@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using Code;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +12,7 @@ public class DroneSpawner : FactoryPool<DroneEnemy>
     private float randomTime;
     private int randomPositionIndex;
 
+    public Action<Transform> OnSpawned;
 
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class DroneSpawner : FactoryPool<DroneEnemy>
                 {
                     Products[i].Setup(ChooseATargetBuilding(), _spawnPoints[randomPositionIndex].position, Quaternion.identity);
                     Products[i].gameObject.SetActive(true);
+                    OnSpawned?.Invoke(Products[i].transform);
                     break;
                 }
             }

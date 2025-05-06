@@ -6,10 +6,10 @@ namespace Code
 {
     public abstract class FactoryPool<T> : MonoBehaviour, IFactory<T> where T : Object
     {
-        [SerializeField] private int _numberOfProducts;
+        [SerializeField] protected int _numberOfProducts;
         [SerializeField] private T _prefab;
         public List<T> Products { get; } = new List<T>();
-
+        
         protected void Awake()
         {
             for (int i = 0; i < _numberOfProducts; i++)
