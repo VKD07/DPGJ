@@ -10,7 +10,7 @@ namespace Code
         [SerializeField] private T _prefab;
         public List<T> Products { get; } = new List<T>();
         
-        protected void Awake()
+        protected virtual void Awake()
         {
             for (int i = 0; i < _numberOfProducts; i++)
             {
@@ -24,7 +24,6 @@ namespace Code
             Products.Add(obj);
             return obj;
         }
-        
 
         public void DestroyItem(T item)
         {

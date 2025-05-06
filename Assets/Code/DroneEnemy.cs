@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace Code
 {
-    public class DroneEnemy : Enemy
+    public class DroneEnemy : Enemy, IProduct
     {
         [SerializeField] private float _moveSpeed = 10f;
         [SerializeField] private Rigidbody _rigidbody;
         private Vector3 _target;
         
-        public void Setup(Vector3 target, Vector3 position, Quaternion rotation)
+        public void SpawnSetup(Vector3 target, Vector3 position, Quaternion rotation)
         {
             transform.position = position;
             transform.rotation = rotation;
