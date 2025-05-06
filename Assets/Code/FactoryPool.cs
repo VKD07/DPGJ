@@ -8,7 +8,7 @@ namespace Code
     {
         [SerializeField] private int _numberOfProducts;
         [SerializeField] private T _prefab;
-        protected List<T> Products { get; } = new List<T>();
+        public List<T> Products { get; } = new List<T>();
 
         protected void Awake()
         {
