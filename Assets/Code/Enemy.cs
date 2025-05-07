@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.PowerUps;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,15 +17,21 @@ namespace Code
         private int _randomIndex;
         private LootPowerUpsManager _lootPowerUpsManager;
         private readonly List<GameObject> _lootPoolBuffer = new List<GameObject>();
+        protected Action OnDeath;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _lootPowerUpsManager = FindAnyObjectByType<LootPowerUpsManager>();
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _health = 100;
+        }
+
+        protected virtual void OnDisable()
+        {
+            
         }
 
         public void OnDamageTaken(float value)
@@ -40,6 +47,7 @@ namespace Code
 
         public void OnDestroy()
         {
+            OnDeath?.Invoke();
             _health = 0;
             gameObject.SetActive(false);
             SpawnLoot();

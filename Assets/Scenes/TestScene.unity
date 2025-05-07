@@ -279,10 +279,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8311303474311996768, guid: 226f66b82303f0542b061a63340dde28, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5824,54 +5820,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &503352058
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 503352059}
-  - component: {fileID: 503352060}
-  m_Layer: 0
-  m_Name: EnemyUITrackerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &503352059
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503352058}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.250034, y: 53.571804, z: -270.47458}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &503352060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503352058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10ab05c44efd4f92b79dce9cb17bc774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  playerCanvas: {fileID: 0}
-  _trackingUI: {fileID: 807478254081304074, guid: b5f07523f7282924eb24f0ccb88d48ff, type: 3}
-  VisibleEnemiesOnCam: []
 --- !u!1 &529515535
 GameObject:
   m_ObjectHideFlags: 0
@@ -21288,8 +21236,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 997262031}
+  - component: {fileID: 997262032}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ExplosionParticlePoolManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21310,6 +21259,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &997262032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997262030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2cd81120a1434490e33fdd993b14a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberOfProducts: 10
+  _prefab: {fileID: 198202731371243394, guid: 8b253d912b916cc4faab60c4f3429aab, type: 3}
 --- !u!1 &1006502804
 GameObject:
   m_ObjectHideFlags: 0
@@ -57724,12 +57687,11 @@ SceneRoots:
   - {fileID: 1575419456}
   - {fileID: 187403912}
   - {fileID: 1336582455}
+  - {fileID: 997262031}
   - {fileID: 1006502805}
   - {fileID: 1643477830}
   - {fileID: 633130205}
   - {fileID: 1936974804}
   - {fileID: 1513531695}
-  - {fileID: 503352059}
   - {fileID: 1310953822}
   - {fileID: 10246442}
-  - {fileID: 997262031}

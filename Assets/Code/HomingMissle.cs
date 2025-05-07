@@ -9,6 +9,13 @@ namespace Code
         private float _speed;
         private Transform _target;
         public ParticleSystem ExplosionParticle;
+        private ExplosionPoolManager _explosionPoolManager;
+        private GameObject _explosion;
+        
+        private void Awake()
+        {
+            _explosionPoolManager = FindAnyObjectByType<ExplosionPoolManager>();
+        }
 
         public void OnSpawn(Vector3 spawnPoint, Transform target, float speed, float damage)
         {
@@ -48,7 +55,8 @@ namespace Code
 
         private void Destroy()
         {
-            Instantiate(ExplosionParticle, transform.position, Quaternion.identity);
+            _explosion = _explosionPoolManager.GetProductFromPool();
+            _explosion.transform.position = transform.position;
             gameObject.SetActive(false);
         }
     }

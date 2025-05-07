@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Code
@@ -6,8 +7,29 @@ namespace Code
     {
         [SerializeField] private float _moveSpeed = 10f;
         [SerializeField] private Rigidbody _rigidbody;
+        private ExplosionPoolManager _explosionPoolManager;
         private Vector3 _target;
-        
+        private GameObject _explosion;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _explosionPoolManager = FindAnyObjectByType<ExplosionPoolManager>();
+            
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            OnDeath += SpawnExplosion;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnEnable();
+            OnDeath -= SpawnExplosion;
+        }
+
         public void SpawnSetup(Vector3 target, Vector3 position, Quaternion rotation)
         {
             transform.position = position;
@@ -29,5 +51,12 @@ namespace Code
             }
             OnDestroy();
         }
+
+        private void SpawnExplosion()
+        {
+            _explosion = _explosionPoolManager.GetProductFromPool();
+            _explosion.transform.position = transform.position;
+        }
+        
     }
 }

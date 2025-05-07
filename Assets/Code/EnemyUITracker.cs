@@ -47,7 +47,7 @@ namespace Code
                     continue;
                 }
 
-                Renderer renderer = enemyObj.GetComponent<Renderer>();
+                Renderer renderer = enemyObj.GetComponentInChildren<Renderer>();
                 if (renderer == null) continue;
 
                 bool isVisible = GeometryUtility.TestPlanesAABB(_cameraFrustumPlanes, renderer.bounds);
