@@ -8,6 +8,7 @@ namespace Code
         private float _damage;
         private float _speed;
         private Transform _target;
+        public ParticleSystem ExplosionParticle;
 
         public void OnSpawn(Vector3 spawnPoint, Transform target, float speed, float damage)
         {
@@ -26,6 +27,7 @@ namespace Code
                     Destroy();
                     return;
                 }
+                transform.LookAt(_target.position);
                 transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
             }
         }
@@ -46,6 +48,7 @@ namespace Code
 
         private void Destroy()
         {
+            Instantiate(ExplosionParticle, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }
