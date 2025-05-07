@@ -22,6 +22,11 @@ namespace Code
             _lootPowerUpsManager = FindAnyObjectByType<LootPowerUpsManager>();
         }
 
+        private void OnEnable()
+        {
+            _health = 100;
+        }
+
         public void OnDamageTaken(float value)
         {
             if (_health <= 0)

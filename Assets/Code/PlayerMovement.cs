@@ -1,3 +1,4 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +28,9 @@ namespace Code
         [SerializeField] private float _rollSmoothing = 5f;
         [SerializeField] private float _thrustTiltAngle = 10f;
         [SerializeField] private float _thrustTiltSmoothing = 5f;
+        
+        [Header("VFX Settings")]
+        [SerializeField] private VfxHandler _vfxHandler;
 
         private PlayerInput _playerInput;
         private InputAction _moveAction;
@@ -48,6 +52,18 @@ namespace Code
             _lookAction = _playerInput.actions["Look"];
         }
 
+        private void OnEnable()
+        {
+            _moveAction.performed += OnMovePerformed;
+            _moveAction.canceled += OnMoveCanceled;
+        }
+
+        private void OnDisable()
+        {
+            _moveAction.performed -= OnMovePerformed;
+            _moveAction.canceled -= OnMoveCanceled;
+        }
+
         private void Update()
         {
             _moveInput = _moveAction.ReadValue<Vector2>();
@@ -60,9 +76,22 @@ namespace Code
         private void Move()
         {
             if (_isAssisted) return;
-
             Vector3 movement = (transform.forward * _moveInput.y * _thrustSpeed + transform.right * _moveInput.x * _strafeSpeed) * Time.deltaTime;
             transform.position += movement;
+        }
+
+        private void OnMovePerformed(InputAction.CallbackContext context)
+        {
+            Vector2 input = context.ReadValue<Vector2>();
+            if (input != Vector2.zero)
+            {
+                _vfxHandler.SetEnableThrustBoosters(true);
+            }
+        }
+
+        private void OnMoveCanceled(InputAction.CallbackContext context)
+        {
+            _vfxHandler.SetEnableThrustBoosters(false);
         }
 
         public void SetAssistedMovement(bool val)

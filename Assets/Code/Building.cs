@@ -46,9 +46,10 @@ namespace Code
             if (_burnPercent > 0)
             {
                 _burnPercent -= depleteVal * Time.deltaTime;
+                Debug.Log("Extinguised");
                 return;
             }
-
+            
             _currentTime = 0;
             _fireParticle.Stop();
             IsBurning = false;
