@@ -15,7 +15,6 @@ namespace Code
         {
             base.Awake();
             _explosionPoolManager = FindAnyObjectByType<ExplosionPoolManager>();
-            
         }
 
         protected override void OnEnable()
@@ -49,14 +48,21 @@ namespace Code
             {
                 burnable.Ignite();
             }
+
             OnDestroy();
         }
 
         private void SpawnExplosion()
         {
-            _explosion = _explosionPoolManager.GetProductFromPool();
-            _explosion.transform.position = transform.position;
+            if (_explosionPoolManager != null)
+            {
+                _explosion = _explosionPoolManager.GetProductFromPool();
+            }
+
+            if (_explosion != null)
+            {
+                _explosion.transform.position = transform.position;
+            }
         }
-        
     }
 }

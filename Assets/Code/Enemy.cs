@@ -10,6 +10,7 @@ namespace Code
     public abstract class Enemy : MonoBehaviour, IDamageable, IDestroyable, ILootable
     {
         [SerializeField] protected float _health;
+        [SerializeField] private Animator _animator;
 
         [Header("Dropped Loot Settings")] [SerializeField]
         private float _dropPercentage = 0.5f;
@@ -41,7 +42,8 @@ namespace Code
                 OnDestroy();
                 return;
             }
-
+            
+            _animator.SetTrigger("Hit");
             _health -= value;
         }
 
