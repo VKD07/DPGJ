@@ -241,15 +241,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 976026583412871550, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.263478
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 976026583412871550, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 53.752415
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 976026583412871550, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 68.80108
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 976026583412871550, guid: 226f66b82303f0542b061a63340dde28, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21281,6 +21281,37 @@ Transform:
   - {fileID: 314641393}
   - {fileID: 1843699502}
   - {fileID: 1950021428}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &997262030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997262031}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &997262031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997262030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.6033106, y: 54.638462, z: 69.16429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006502804
@@ -57705,3 +57736,4 @@ SceneRoots:
   - {fileID: 503352059}
   - {fileID: 1310953822}
   - {fileID: 10246442}
+  - {fileID: 997262031}

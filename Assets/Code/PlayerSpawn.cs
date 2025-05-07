@@ -6,7 +6,7 @@ namespace Code
     public class PlayerSpawn : MonoBehaviour
     {
         [SerializeField] private Transform [] _spawnPoints;
-        private int _playerCount;
+        public int _playerCount { get; private set; }
 
         public void OnPlayerJoined(PlayerInput playerInput)
         {

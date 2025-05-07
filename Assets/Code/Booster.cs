@@ -32,6 +32,9 @@ namespace Code
         [Header("UI")]
         [SerializeField] private Slider _slider;
 
+        [Header("VFX")] 
+        [SerializeField] private VfxHandler _boosterVfx;
+
         private float _initThurstSpeed;
         private float _initYawSpeed;
         private bool _isSprinting;
@@ -66,6 +69,7 @@ namespace Code
             {
                 _isSprinting = false;
                 RegenerateBoost();
+                _boosterVfx.SetActiveBooster(false);
 
                 if (_currentBoostPercent >= _totalBoostPercent)
                 {
@@ -80,7 +84,7 @@ namespace Code
             {
                 _isSprinting = true;
                 _currentBoostPercent -= Time.deltaTime * _depletionStrength;
-
+                _boosterVfx.SetActiveBooster(true);
                 if (_currentBoostPercent <= 0f)
                 {
                     _currentBoostPercent = 0f;
@@ -91,6 +95,7 @@ namespace Code
             else
             {
                 _isSprinting = false;
+                _boosterVfx.SetActiveBooster(false);
                 RegenerateBoost();
             }
 
