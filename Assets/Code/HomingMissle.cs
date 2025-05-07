@@ -55,7 +55,17 @@ namespace Code
 
         private void Destroy()
         {
+            if (_explosionPoolManager.GetProductFromPool() == null)
+            {
+                return;
+            }
+           
             _explosion = _explosionPoolManager.GetProductFromPool();
+            
+            if (_explosion == null)
+            {
+                return;
+            }
             _explosion.transform.position = transform.position;
             gameObject.SetActive(false);
         }
