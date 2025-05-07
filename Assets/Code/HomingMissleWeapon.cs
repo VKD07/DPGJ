@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,11 @@ namespace Code
         [SerializeField] private int _numOfMisslesAvailable = 10;
         [SerializeField] private float _missleSpeed = 30f;
         [SerializeField] private float _missleDamage = 1000f;
+
+        [Header("UI")]
+        [SerializeField] private GameObject _missleUI;
+
+        [SerializeField] private TextMeshProUGUI _missleCountTxt;
 
         public bool IsActivated;
 
@@ -23,11 +29,13 @@ namespace Code
             base.Awake();
             _enemyUITracker = GetComponent<EnemyUITracker>();
             _playergun = GetComponent<Gun>();
-
+            
             var playerInput = GetComponent<PlayerInput>();
             _attackAction = playerInput.actions["Attack"];
 
             _initMissleAmount = _numOfMisslesAvailable;
+            _missleUI.gameObject.SetActive(false);
+            _missleCountTxt.text = _numOfMisslesAvailable.ToString();
         }
 
         private void OnEnable()
@@ -46,12 +54,14 @@ namespace Code
             if (_numOfMisslesAvailable > 0 && _attackAction.WasPressedThisFrame())
             {
                 _numOfMisslesAvailable--;
+                _missleCountTxt.text = _numOfMisslesAvailable.ToString();
                 ActivateMissle();
             }
 
             if (_numOfMisslesAvailable <= 0)
             {
                 IsActivated = false;
+                _missleUI.gameObject.SetActive(false);
                 _playergun.DisableGun = false;
             }
         }
@@ -59,7 +69,7 @@ namespace Code
         private void ActivateMissle()
         {
             _playergun.DisableGun = true;
-
+            _missleUI.gameObject.SetActive(true);
             for (int i = 0; i < Products.Count; i++)
             {
                 if (!Products[i].gameObject.activeSelf)
@@ -84,6 +94,7 @@ namespace Code
 
         public void ReloadMissles()
         {
+            _missleUI.gameObject.SetActive(true);
             _numOfMisslesAvailable = _initMissleAmount;
         }
     }
