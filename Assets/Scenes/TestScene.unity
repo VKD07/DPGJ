@@ -36498,7 +36498,6 @@ MonoBehaviour:
   _powerUps:
   - {fileID: 3315346151751278332, guid: 1753c5d67b38f2741aa15384735809bb, type: 3}
   - {fileID: 2821953744260386293, guid: 62898d5dc8f5fb74f8bc751c535f0523, type: 3}
-  - {fileID: 6445572331741610468, guid: 3e8b144132ba37d418dad1b351c6a41d, type: 3}
   _numofPoolPerPowerUp: 6
 --- !u!1 &1368970053
 GameObject:
