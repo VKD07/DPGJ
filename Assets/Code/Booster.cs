@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,7 +32,11 @@ namespace Code
         [SerializeField] private CinemachineCamera _cinemachineCamera;
 
         [Header("UI")]
-        [SerializeField] private Slider _slider;
+        [SerializeField] private Image _boostInnerImage;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private float _fadeSpeed = 0.2f;
+        [SerializeField] private Color _normalColor;
+        [SerializeField] private Color _overHeatColor;
 
         [Header("VFX")] 
         [SerializeField] private VfxHandler _boosterVfx;
@@ -38,6 +44,8 @@ namespace Code
         private float _initThurstSpeed;
         private float _initYawSpeed;
         private bool _isSprinting;
+        private bool _hasShownUI;
+        private Coroutine _fadeCoroutine;
 
         private InputAction _sprintAction;
 
@@ -46,6 +54,7 @@ namespace Code
             _initThurstSpeed = _playerMovement.GetThrustSpeed();
             _initYawSpeed = _playerMovement.GetYawSpeed();
             _currentBoostPercent = _totalBoostPercent;
+            _canvasGroup.alpha = 0;
 
             var playerInput = GetComponent<PlayerInput>();
             _sprintAction = playerInput.actions["Sprint"];
@@ -59,6 +68,7 @@ namespace Code
             HandleBoostInput();
             UpdateMovement();
             UpdateCamera();
+            UpdateBoosterUICanvasGroup();
         }
 
         private void HandleBoostInput()
@@ -74,6 +84,7 @@ namespace Code
                 if (_currentBoostPercent >= _totalBoostPercent)
                 {
                     _currentBoostPercent = _totalBoostPercent;
+                    _boostInnerImage.color = _normalColor;
                     _boostDepleted = false;
                 }
 
@@ -85,8 +96,10 @@ namespace Code
                 _isSprinting = true;
                 _currentBoostPercent -= Time.deltaTime * _depletionStrength;
                 _boosterVfx.SetActiveBooster(true);
+                _hasShownUI = true;
                 if (_currentBoostPercent <= 0f)
                 {
+                    _boostInnerImage.color = _overHeatColor;
                     _currentBoostPercent = 0f;
                     _boostDepleted = true;
                     _isSprinting = false;
@@ -134,9 +147,33 @@ namespace Code
             );
         }
 
+        private void UpdateBoosterUICanvasGroup()
+        {
+            if (_hasShownUI)
+            {
+                _hasShownUI = false;
+                _canvasGroup.alpha = 1f;
+
+                if (_fadeCoroutine != null)
+                    StopCoroutine(_fadeCoroutine);
+
+                _fadeCoroutine = StartCoroutine(FadeOutCanvasGroup());
+            }
+        }
+
+        private IEnumerator FadeOutCanvasGroup()
+        {
+            while (_canvasGroup.alpha > 0f)
+            {
+                _canvasGroup.alpha -= Time.deltaTime * _fadeSpeed;
+                yield return null;
+            }
+
+            _canvasGroup.alpha = 0f;
+        }
         private void UpdateUISlider()
         {
-            _slider.value = _currentBoostPercent / 100f;
+            _boostInnerImage.fillAmount = _currentBoostPercent / 100;
         }
     }
 }
