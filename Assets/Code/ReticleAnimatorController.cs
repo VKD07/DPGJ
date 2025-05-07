@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code
 {
     public class ReticleAnimatorController : MonoBehaviour
     {
-        [SerializeField] private Animator _animator;
+        public Animator Animator;
 
         public void SetBoolShootingReticle(bool val)
         {
-            _animator.SetBool("ShootingReticle", val);
+            Animator.SetBool("ShootingReticle", val);
         }
 
         public void SetBoolEnemyDetectedReticle(bool val)
         {
-            _animator.SetBool("TriggerReticle", val);
+            Animator.SetBool("TriggerReticle", val);
         }
     }
 }

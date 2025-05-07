@@ -27,7 +27,7 @@ namespace Code
 
         [Header("VFX Settings")]
         [SerializeField] private VfxHandler _vfxHandler;
-        [SerializeField] private ReticleAnimatorController _reticleAnimatorController;
+        public ReticleAnimatorController _reticleAnimatorController;
 
         private Ray _attackGunRay;
         private Ray _waterGunRay;
