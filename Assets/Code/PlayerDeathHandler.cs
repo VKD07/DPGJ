@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,15 +9,21 @@ namespace Code
     {
         [SerializeField] private float _deathTime = 5f;
         [SerializeField] private GameObject _visuals;
+        [SerializeField] private GameObject _respawnPanel;
+        [SerializeField] private TextMeshProUGUI _respawnNumber;
         private Vector3 _deathPosition;
         private float _currentTime;
         private bool _isDead;
 
         private MonoBehaviour[] playerScripts;
+        private PlayerSpawn _playerSpawn;
 
         private void Awake()
         {
             playerScripts = GetComponents<MonoBehaviour>();
+            _playerSpawn = FindAnyObjectByType<PlayerSpawn>();
+            _respawnPanel.SetActive(false);
+
         }
 
         private void Update()
@@ -31,6 +38,8 @@ namespace Code
                 if (_currentTime < _deathTime)
                 {
                     _currentTime += Time.deltaTime;
+                    int time = Mathf.CeilToInt(_deathTime - _currentTime);
+                    _respawnNumber.text = time.ToString();
                     return;
                 }
                 _currentTime = 0;
@@ -41,6 +50,7 @@ namespace Code
         public void KillPlayer()
         {
             _deathPosition = transform.position;
+            _respawnPanel.SetActive(true);
             _isDead = true;
             SetEnablePlayerScripts(false);
             _visuals.SetActive(false);
@@ -48,8 +58,9 @@ namespace Code
 
         public void RevivePlayer()
         {
+            _respawnPanel.SetActive(false);
             _isDead = false;
-            transform.position = _deathPosition + (Vector3.up * 40f);
+            transform.position = _playerSpawn._spawnPoints[0].position;
             SetEnablePlayerScripts(true);
             _visuals.SetActive(true);
         }

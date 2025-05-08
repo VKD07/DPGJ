@@ -23,11 +23,13 @@ namespace Code
         private Gun _playergun;
         private InputAction _attackAction;
         private int _initMissleAmount;
+        private PlayerDroneKillHandler _playerDroneKillHandler;
 
         protected override void Awake()
         {
             base.Awake();
             _enemyUITracker = GetComponent<EnemyUITracker>();
+            _playerDroneKillHandler = GetComponent<PlayerDroneKillHandler>();
             _playergun = GetComponent<Gun>();
             
             var playerInput = GetComponent<PlayerInput>();
@@ -85,7 +87,8 @@ namespace Code
                         _playergun._bulletSpawnPoint.position,
                         targetEnemy.transform,
                         _missleSpeed,
-                        _missleDamage
+                        _missleDamage,
+                        _playerDroneKillHandler
                     );
                     return;
                 }

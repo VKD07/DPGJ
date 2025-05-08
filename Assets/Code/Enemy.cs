@@ -35,16 +35,16 @@ namespace Code
             
         }
 
-        public void OnDamageTaken(float value)
+        public void OnDamageTaken(float value, PlayerDroneKillHandler damageTakenHandler)
         {
-            if (_health <= 0)
-            {
-                OnDestroy();
-                return;
-            }
-            
             _animator.SetTrigger("Hit");
             _health -= value;
+            
+            if (_health <= 0)
+            {
+                damageTakenHandler.numOfDroneKilled++;
+                OnDestroy();
+            }
         }
 
         public void OnDestroy()

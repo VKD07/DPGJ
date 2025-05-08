@@ -11,15 +11,17 @@ namespace Code
         public ParticleSystem ExplosionParticle;
         private ExplosionPoolManager _explosionPoolManager;
         private GameObject _explosion;
+        private PlayerDroneKillHandler _killHandler;
         
         private void Awake()
         {
             _explosionPoolManager = FindAnyObjectByType<ExplosionPoolManager>();
         }
 
-        public void OnSpawn(Vector3 spawnPoint, Transform target, float speed, float damage)
+        public void OnSpawn(Vector3 spawnPoint, Transform target, float speed, float damage, PlayerDroneKillHandler killHandler)
         {
             transform.position = spawnPoint;
+            _killHandler = killHandler;
             _speed = speed;
             _target = target;
             _damage = damage;
@@ -43,7 +45,7 @@ namespace Code
         {
             if (other.transform.TryGetComponent(out IDamageable damageable))
             {
-                damageable.OnDamageTaken(_damage);
+                damageable.OnDamageTaken(_damage, _killHandler);
             }
 
             if (other.transform.TryGetComponent(out PlayerDeathHandler playerDeathHandler))

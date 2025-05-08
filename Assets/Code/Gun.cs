@@ -50,11 +50,13 @@ namespace Code
         private InputAction _waterGunAction;
         private BulletPool _bulletPool;
         private RaycastHit _hitAttackGun;
+        private PlayerDroneKillHandler _playerDroneKillHandler;
 
         private void Awake()
         {
             _playerInput = GetComponent<PlayerInput>();
             _bulletPool = FindAnyObjectByType<BulletPool>();
+            _playerDroneKillHandler = GetComponent<PlayerDroneKillHandler>();
             _attackAction = _playerInput.actions["Attack"];
             _waterGunAction = _playerInput.actions["WaterGun"];
         }
@@ -122,7 +124,7 @@ namespace Code
                 _reticleAnimatorController.SetBoolShootingReticle(true);
                 _reticleAnimatorController.SetBoolEnemyDetectedReticle(false);
 
-                damageable.OnDamageTaken(_gunDamage);
+                damageable.OnDamageTaken(_gunDamage, _playerDroneKillHandler);
             }
 
             if (!_disableFriendlyFire && hit.transform.TryGetComponent(out PlayerDeathHandler playerDeathHandler))
