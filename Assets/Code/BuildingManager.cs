@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Code
@@ -8,7 +10,8 @@ namespace Code
         public static BuildingManager Instance { get; private set; }
 
         public List<Building> AllBuildings { get; private set; }
-
+        public Action ALlBuildingsDestroyed;
+        private int numOfBuildingsDestroyed;
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -24,7 +27,15 @@ namespace Code
 
         public void RemoveBuilding(Building building)
         {
+            numOfBuildingsDestroyed++;
+
+            if (numOfBuildingsDestroyed >= AllBuildings.Count)
+            {
+                ALlBuildingsDestroyed?.Invoke();
+            }
+            
             AllBuildings.Remove(building);
         }
+        
     }
 }
