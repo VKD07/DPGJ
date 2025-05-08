@@ -41,6 +41,10 @@ namespace Code
         [Header("VFX")] 
         [SerializeField] private VfxHandler _boosterVfx;
 
+        [Header("SFX")] [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _windAudioSource;
+        [SerializeField] private AudioClip _boostSound;
+        private bool _hasSoundPlayed;
         private float _initThurstSpeed;
         private float _initYawSpeed;
         private bool _isSprinting;
@@ -80,6 +84,8 @@ namespace Code
                 _isSprinting = false;
                 RegenerateBoost();
                 _boosterVfx.SetActiveBooster(false);
+                _windAudioSource.Stop();
+                _hasSoundPlayed = false;
 
                 if (_currentBoostPercent >= _totalBoostPercent)
                 {
@@ -93,6 +99,13 @@ namespace Code
 
             if (sprintingInput && _currentBoostPercent > 0f)
             {
+                if (!_hasSoundPlayed)
+                {
+                    _windAudioSource.Play();
+                    _hasSoundPlayed = true;
+                    _audioSource.PlayOneShot(_boostSound, 0.7f);
+                }
+                
                 _isSprinting = true;
                 _currentBoostPercent -= Time.deltaTime * _depletionStrength;
                 _boosterVfx.SetActiveBooster(true);
@@ -107,6 +120,8 @@ namespace Code
             }
             else
             {
+                _windAudioSource.Stop();
+                _hasSoundPlayed = false;
                 _isSprinting = false;
                 _boosterVfx.SetActiveBooster(false);
                 RegenerateBoost();

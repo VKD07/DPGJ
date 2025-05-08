@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Serialization;
 
 namespace Code
 {
@@ -28,6 +29,8 @@ namespace Code
         [Header("Other Settings")] [SerializeField]
         private Camera _playerCamera;
 
+        [SerializeField] private AudioSource _gunAudioSource;
+
         [SerializeField] private float _rayDistance = 50f;
 
         [Header("VFX Settings")] [SerializeField]
@@ -39,6 +42,9 @@ namespace Code
         private Image _waterBarOuter;
 
         [SerializeField] private CanvasGroup _waterBarCanvas;
+
+        [Header("Audio Settings")] [SerializeField]
+        private AudioSource _waterSprayAudioSource;
 
         private Coroutine _fadeCoroutine;
 
@@ -83,6 +89,11 @@ namespace Code
                 if (_attackAction.IsPressed() && Time.time >= _lastAttackTime + _attackInterval)
                 {
                     _vfxHandler.SetEnableLazerWeapon(true);
+                    if (!_gunAudioSource.isPlaying)
+                    {
+                        _gunAudioSource.Play();
+                    }
+
                     if (Physics.Raycast(_attackGunRay, out _hitAttackGun, _rayDistance))
                     {
                         ShootEnemies(_hitAttackGun);
@@ -92,6 +103,11 @@ namespace Code
 
                 if (_attackAction.WasReleasedThisFrame())
                 {
+                    if (_gunAudioSource.isPlaying)
+                    {
+                        _gunAudioSource.Stop();
+                    }
+
                     _reticleAnimatorController.SetBoolShootingReticle(false);
                 }
             }
@@ -108,6 +124,7 @@ namespace Code
             if (_waterGunAction.WasReleasedThisFrame())
             {
                 _vfxHandler.SetEnableWaterGun(false);
+                _waterSprayAudioSource.Stop();
                 if (_fadeCoroutine != null)
                 {
                     StopCoroutine(_fadeCoroutine);
@@ -145,6 +162,11 @@ namespace Code
                 {
                     if (_waterStoragePercent > 0)
                     {
+                        if (!_waterSprayAudioSource.isPlaying)
+                        {
+                            _waterSprayAudioSource.Play();
+                        }
+
                         _vfxHandler.SetEnableWaterGun(true);
                         burnable.Extinguish(_fireExtinguishStr);
                     }

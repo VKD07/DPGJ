@@ -9,7 +9,7 @@ namespace Code
         [SerializeField] private GameObject[] _objectsToChangeLayer;
         [SerializeField] private GameObject[] _reticleImageControllers;
         [SerializeField] private Gun _playerGun;
-        
+        public AudioListener audioListener;
         private PlayerSpawn _playerSpawn;
 
         private void Awake()
@@ -37,6 +37,7 @@ namespace Code
                 _reticleImageControllers[1].SetActive(true);
                 _playerGun._reticleAnimatorController = _reticleImageControllers[1].GetComponent<ReticleAnimatorController>();
                 _reticleImageControllers[0].SetActive(false);
+                audioListener.enabled = false;
                 targetLayer = LayerMask.NameToLayer("Player2UI");
             }
 
