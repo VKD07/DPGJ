@@ -65,7 +65,7 @@ namespace Code
             _visuals.SetActive(true);
         }
 
-        private void SetEnablePlayerScripts(bool val)
+        public void SetEnablePlayerScripts(bool val)
         {
             for (int i = 0; i < playerScripts.Length; i++)
             {

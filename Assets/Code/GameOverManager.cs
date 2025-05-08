@@ -1,6 +1,8 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Code
 {
@@ -13,6 +15,7 @@ namespace Code
         [SerializeField] private PlayerSpawn _playerSpawn;
         [SerializeField] private TextMeshProUGUI _player1Score, _player2Score;
         [SerializeField] private BuildingManager _buildingManager;
+        [SerializeField] private Button _restartButton;
         private float _currentTime;
         private bool _gameOverTriggered;
 
@@ -27,6 +30,7 @@ namespace Code
 
         private void OnEnable()
         {
+            _restartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
             _buildingManager.ALlBuildingsDestroyed += TriggerGameOver;
         }
         
