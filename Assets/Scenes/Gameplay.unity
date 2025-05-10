@@ -4384,7 +4384,7 @@ MonoBehaviour:
   _timerValue: {fileID: 1461986892}
   _timerPanel: {fileID: 1666442330}
   _gameOverPanel: {fileID: 519659263}
-  _maxTimeInSeconds: 15
+  _maxTimeInSeconds: 240
   _playerSpawn: {fileID: 187403913}
   _player1Score: {fileID: 1974588702}
   _player2Score: {fileID: 680183510}
@@ -10211,7 +10211,6 @@ GameObject:
   - component: {fileID: 1683324774}
   - component: {fileID: 1683324777}
   - component: {fileID: 1683324775}
-  - component: {fileID: 1683324778}
   m_Layer: 0
   m_Name: StartingCamera
   m_TagString: Untagged
@@ -10329,14 +10328,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1683324778
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683324773}
-  m_Enabled: 1
 --- !u!4 &1688497614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4855556370681302, guid: 65f76c5f923964045833f09a3f767a16, type: 3}
@@ -13335,6 +13326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2057891857}
   - component: {fileID: 2057891858}
+  - component: {fileID: 2057891859}
   m_Layer: 0
   m_Name: MainGameAudio
   m_TagString: Untagged
@@ -13454,6 +13446,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &2057891859
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057891856}
+  m_Enabled: 1
 --- !u!1 &2067095342
 GameObject:
   m_ObjectHideFlags: 0

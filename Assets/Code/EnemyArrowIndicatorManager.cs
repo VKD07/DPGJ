@@ -23,6 +23,12 @@ namespace Code
 
         private void Update()
         {
+            if (_droneSpawner == null)
+            {
+                _droneSpawner = FindAnyObjectByType<DroneSpawner>();
+                return;
+            }
+            
             UpdateTrackedEnemies();
         }
 

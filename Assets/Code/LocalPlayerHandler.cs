@@ -1,5 +1,4 @@
-﻿using UnityEditor.Animations;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code
 {
@@ -37,7 +36,6 @@ namespace Code
                 _reticleImageControllers[1].SetActive(true);
                 _playerGun._reticleAnimatorController = _reticleImageControllers[1].GetComponent<ReticleAnimatorController>();
                 _reticleImageControllers[0].SetActive(false);
-                audioListener.enabled = false;
                 targetLayer = LayerMask.NameToLayer("Player2UI");
             }
 

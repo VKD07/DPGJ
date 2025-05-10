@@ -23,7 +23,14 @@ namespace Code
 
         private void Update()
         {
-            if (_droneSpawner == null || cam == null || playerCanvas == null) return;
+
+            if (_droneSpawner == null)
+            {
+                _droneSpawner = FindAnyObjectByType<DroneSpawner>();
+                return;
+            }
+            
+            if (cam == null || playerCanvas == null) return;
 
             VisibleEnemiesOnCam.Clear();
             GeometryUtility.CalculateFrustumPlanes(cam, _cameraFrustumPlanes);

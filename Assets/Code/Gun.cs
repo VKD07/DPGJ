@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -111,6 +112,10 @@ namespace Code
                     _reticleAnimatorController.SetBoolShootingReticle(false);
                 }
             }
+            else
+            {
+                _gunAudioSource.Stop();
+            }
 
             if (_waterGunAction.IsPressed())
             {
@@ -204,6 +209,12 @@ namespace Code
 
             _fadeCoroutine = StartCoroutine(FadeOutWaterBar(3));
             _waterStoragePercent = 100;
+        }
+
+        private void OnDisable()
+        {
+            _gunAudioSource.Stop();
+            _waterSprayAudioSource.Stop();
         }
     }
 }

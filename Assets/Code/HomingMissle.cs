@@ -12,13 +12,14 @@ namespace Code
         private ExplosionPoolManager _explosionPoolManager;
         private GameObject _explosion;
         private PlayerDroneKillHandler _killHandler;
-        
+
         private void Awake()
         {
             _explosionPoolManager = FindAnyObjectByType<ExplosionPoolManager>();
         }
 
-        public void OnSpawn(Vector3 spawnPoint, Transform target, float speed, float damage, PlayerDroneKillHandler killHandler)
+        public void OnSpawn(Vector3 spawnPoint, Transform target, float speed, float damage,
+            PlayerDroneKillHandler killHandler)
         {
             transform.position = spawnPoint;
             _killHandler = killHandler;
@@ -29,6 +30,12 @@ namespace Code
 
         public void Update()
         {
+            if (_explosionPoolManager == null)
+            {
+                _explosionPoolManager = FindAnyObjectByType<ExplosionPoolManager>();
+                return;
+            }
+
             if (_target != null)
             {
                 if (!_target.gameObject.activeSelf)
@@ -36,6 +43,7 @@ namespace Code
                     Destroy();
                     return;
                 }
+
                 transform.LookAt(_target.position);
                 transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
             }
@@ -52,6 +60,7 @@ namespace Code
             {
                 return;
             }
+
             Destroy();
         }
 
@@ -61,13 +70,14 @@ namespace Code
             {
                 return;
             }
-           
+
             _explosion = _explosionPoolManager.GetProductFromPool();
-            
+
             if (_explosion == null)
             {
                 return;
             }
+
             _explosion.transform.position = transform.position;
             gameObject.SetActive(false);
         }

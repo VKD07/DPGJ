@@ -592,7 +592,7 @@ MonoBehaviour:
   - {fileID: 8311303474311996768}
   - {fileID: 1095219551023878752}
   _playerGun: {fileID: 3646857399462045467}
-  audioListener: {fileID: 6081806616143297007}
+  audioListener: {fileID: 0}
 --- !u!114 &4780191338308391212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,7 +1000,6 @@ GameObject:
   - component: {fileID: 3118102896748267939}
   - component: {fileID: 1684458080561854445}
   - component: {fileID: 5327557965775279700}
-  - component: {fileID: 6081806616143297007}
   m_Layer: 0
   m_Name: PlayerMain_Camera
   m_TagString: MainCamera
@@ -1151,14 +1150,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!81 &6081806616143297007
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2715102363840313650}
-  m_Enabled: 1
 --- !u!1 &2780965826013728059
 GameObject:
   m_ObjectHideFlags: 0

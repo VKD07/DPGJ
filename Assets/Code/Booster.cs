@@ -190,5 +190,10 @@ namespace Code
         {
             _boostInnerImage.fillAmount = _currentBoostPercent / 100;
         }
+
+        private void OnDisable()
+        {
+            _audioSource.Stop();
+        }
     }
 }
