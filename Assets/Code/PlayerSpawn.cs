@@ -15,6 +15,7 @@ namespace Code
         [SerializeField] private GameObject _gameCamera;
         [SerializeField] private GameObject _gameplayManagers;
         [SerializeField] private GameObject _playerJoinPanel;
+        [SerializeField] private GameObject _titleImage;
 
         public int _playerCount { get; private set; }
         private bool _gameStarted;
@@ -42,6 +43,7 @@ namespace Code
                 _gameplayManagers.SetActive(true);
                 _gameCamera.SetActive(false);
                 _playerJoinPanel.SetActive(false);
+                _titleImage.SetActive(false);
             }
 
             // playerInput.gameObject.SetActive(false);
