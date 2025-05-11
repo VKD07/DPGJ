@@ -193,6 +193,7 @@ namespace Code
 
         private void OnDisable()
         {
+            _windAudioSource.Stop();
             _audioSource.Stop();
         }
     }

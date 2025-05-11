@@ -49,6 +49,7 @@ namespace Code
 
         public void KillPlayer()
         {
+            Debug.Log("Dead");
             _deathPosition = transform.position;
             _respawnPanel.SetActive(true);
             _isDead = true;

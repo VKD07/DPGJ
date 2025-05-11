@@ -437,7 +437,7 @@ MonoBehaviour:
   _bulletSpawnPoint: {fileID: 6041125087615638690}
   _waterStoragePercent: 100
   _waterGunReductionStr: 5
-  _fireExtinguishStr: 40
+  _fireExtinguishStr: 60
   _waterRange: 200
   _playerCamera: {fileID: 3118102896748267939}
   _gunAudioSource: {fileID: 6703378109616109496}
@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 3118102896748267939}
   - component: {fileID: 1684458080561854445}
   - component: {fileID: 5327557965775279700}
+  - component: {fileID: 8841800740131511924}
   m_Layer: 0
   m_Name: PlayerMain_Camera
   m_TagString: MainCamera
@@ -1069,7 +1070,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
+  m_ForceIntoRT: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -1150,6 +1151,31 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &8841800740131511924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2715102363840313650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb42831ee5422f409e7f24f9e7488ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage: 0
+  renderingStrategy: 0
+  renderingMode: 0
+  outlineLayerMask: -1
+  primaryBufferSizeMode: 0
+  primaryRendererScale: 0.75
+  primarySizeReference: 800
+  blurShift: 1
+  dilateShift: 1
+  dilateIterations: 4
+  dilateQuality: 0
+  blurIterations: 0
+  blurType: 1
 --- !u!1 &2780965826013728059
 GameObject:
   m_ObjectHideFlags: 0

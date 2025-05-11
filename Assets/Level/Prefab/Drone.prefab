@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _animator: {fileID: 2321449395961599190}
-  _dropPercentage: 1
+  _dropPercentage: 0.3
   _moveSpeed: 15
   _rigidbody: {fileID: 1806326709923460014}
 --- !u!54 &1806326709923460014

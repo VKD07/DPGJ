@@ -51,8 +51,8 @@ namespace Code
         {
             OnDeath?.Invoke();
             _health = 0;
-            gameObject.SetActive(false);
             SpawnLoot();
+            gameObject.SetActive(false);
         }
 
         public void SpawnLoot()

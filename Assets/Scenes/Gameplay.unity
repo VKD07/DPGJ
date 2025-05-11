@@ -257,6 +257,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5131514384243627498, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7057466908571578903, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
       propertyPath: m_Name
       value: Building1 (5)
@@ -1805,6 +1809,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4432082219185578835, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: _outlinable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131514384243627498, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131514384243627498, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7057466908571578903, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
       propertyPath: m_Name
       value: Building1 (2)
@@ -1990,6 +2006,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2838447366568288660, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131514384243627498, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: outlineTargets.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7057466908571578903, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
@@ -3052,6 +3072,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (3)
@@ -3270,6 +3294,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (5)
@@ -3654,6 +3682,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2838447366568288660, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131514384243627498, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: outlineTargets.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7057466908571578903, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
@@ -4501,8 +4533,8 @@ Transform:
   m_GameObject: {fileID: 882609281}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46443284, y: 0.46443278, z: -0.5332, w: -0.53319997}
-  m_LocalPosition: {x: -179, y: 1314, z: -1405}
-  m_LocalScale: {x: 816.54663, y: 2560.1343, z: 3300.1553}
+  m_LocalPosition: {x: -179, y: 1317, z: -1405}
+  m_LocalScale: {x: 381.7274, y: 2560.1343, z: 3300.1553}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1719835393}
@@ -4907,6 +4939,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (4)
@@ -6889,6 +6925,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (7)
@@ -7451,6 +7491,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (8)
@@ -7603,6 +7647,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (1)
@@ -10200,6 +10248,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043536491138128520, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (9)
@@ -10400,7 +10456,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
+  m_ForceIntoRT: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -11854,6 +11910,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (6)
@@ -12513,7 +12573,7 @@ MonoBehaviour:
   - {fileID: 1439319967}
   - {fileID: 1192612506}
   - {fileID: 351196670}
-  _timeBetweenSpawns: {x: 4, y: 7}
+  _timeBetweenSpawns: {x: 3, y: 6}
   _hideOnSpawn: 1
   _buildingManger: {fileID: 1513531696}
 --- !u!1001 &1968396850
@@ -14084,6 +14144,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2 (2)
@@ -14409,6 +14473,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5131514384243627498, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7057466908571578903, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
       propertyPath: m_Name
       value: Building1 (1)
@@ -14436,6 +14504,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86043815}
     m_Modifications:
+    - target: {fileID: 1362160523053180655, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175139576916315808, guid: 511d76b1244867f43b8509b00b3a7495, type: 3}
       propertyPath: m_Name
       value: Building2
@@ -14532,6 +14604,14 @@ PrefabInstance:
     - target: {fileID: 2838447366568288660, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131514384243627498, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000741545461214807, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7057466908571578903, guid: 4f3dbf9580cc57943b7a879d40d495bc, type: 3}
       propertyPath: m_Name
